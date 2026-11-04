@@ -11,6 +11,8 @@
 		AC7F575B309AA144003A7476 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7F575A309AA144003A7476 /* ContentView.swift */; };
 		AC7F575D309AA149003A7476 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7F575C309AA149003A7476 /* Assets.xcassets */; };
 		AC7F5760309AA14A003A7476 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7F575F309AA14A003A7476 /* Preview Assets.xcassets */; };
+		C0A1B2C3309AA14A003A7476 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A1B2C4309AA14A003A7476 /* GameModel.swift */; };
+		C0A1B2C5309AA14A003A7476 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A1B2C6309AA14A003A7476 /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		AC7F575A309AA144003A7476 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AC7F575C309AA149003A7476 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC7F575F309AA14A003A7476 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0A1B2C4309AA14A003A7476 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		C0A1B2C6309AA14A003A7476 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				AC7F5758309AA144003A7476 /* PlantillaApp.swift */,
 				AC7F575A309AA144003A7476 /* ContentView.swift */,
+				C0A1B2C4309AA14A003A7476 /* GameModel.swift */,
+				C0A1B2C6309AA14A003A7476 /* SoundPlayer.swift */,
 				AC7F575C309AA149003A7476 /* Assets.xcassets */,
 				AC7F575E309AA14A003A7476 /* Preview Content */,
 			);
@@ -139,6 +145,8 @@
 			files = (
 				AC7F575B309AA144003A7476 /* ContentView.swift in Sources */,
 				AC7F5759309AA144003A7476 /* PlantillaApp.swift in Sources */,
+				C0A1B2C3309AA14A003A7476 /* GameModel.swift in Sources */,
+				C0A1B2C5309AA14A003A7476 /* SoundPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

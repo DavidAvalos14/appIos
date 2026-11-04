@@ -13,7 +13,13 @@ jobs:
 
       - name: Build iOS Simulator App
         run: |
-          xcodebuild -project Plantilla.xcodeproj -scheme Plantilla -sdk iphonesimulator -configuration Debug -derivedDataPath build/
+          xcodebuild \
+            -project Plantilla.xcodeproj \
+            -scheme Plantilla \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            -derivedDataPath build/ \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
