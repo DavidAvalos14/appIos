@@ -2,7 +2,7 @@ name: Build for Appetize
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, spaceInvaders ]
 
 jobs:
   build-ios-simulator:
