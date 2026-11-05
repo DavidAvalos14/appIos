@@ -2,7 +2,7 @@ name: Build for Appetize
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ '**' ]
 
 jobs:
   build-ios-simulator:
@@ -11,9 +11,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Generate Xcode project
+        run: |
+          brew install xcodegen
+          xcodegen generate
+
       - name: Build iOS Simulator App
         run: |
-          xcodebuild -project Plantilla.xcodeproj -scheme Plantilla -sdk iphonesimulator -configuration Debug -derivedDataPath build/
+          xcodebuild \
+            -project Plantilla.xcodeproj \
+            -scheme Plantilla \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            -derivedDataPath build/ \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
