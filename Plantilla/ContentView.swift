@@ -59,28 +59,32 @@ struct ContentView: View {
                 let w = geo.size.width
                 let h = geo.size.height
                 ZStack {
-                    LinearGradient(colors: [.black, .indigo],
-                        startPoint: .top, endPoint: .bottom)
+                    Image("universe2")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: w, height: h)
                     ForEach(0..<5, id: \.self) { i in
                         if game.alive[i] {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.green)
-                                .frame(width: w * 0.10,
-                                       height: h * 0.07)
+                            Image("badship2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: w * 0.12,
+                                       height: h * 0.08)
                                 .position(x: game.enemyX(i) * w,
                                           y: game.enemyVerticalPosition * h)
                         }
                     }
-                    Image(systemName: "paperplane.fill")
-                        .resizable().scaledToFit()
-                        .rotationEffect(.degrees(-45))
-                        .foregroundStyle(.cyan)
-                        .frame(width: w * 0.12, height: h * 0.08)
+                    Image("spaceship2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: w * 0.18, height: h * 0.10)
                         .position(x: game.shipX * w, y: h * 0.90)
                     if let bullet = game.bullet {
-                        Capsule().fill(Color.yellow)
-                            .frame(width: w * 0.02,
-                                   height: h * 0.04)
+                        Image("shot")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: w * 0.025,
+                                   height: h * 0.07)
                             .position(x: bullet.x * w,
                                       y: bullet.y * h)
                     }
