@@ -1,46 +1,43 @@
 //
 //  ContentView.swift
-//  Plantilla
+//  SpaceInvaders0
 //
-//  Created by Guest User on 03/11/26.
+//  Created by Lina Arias on 05/11/26.
 //
-
-// App Space Invaders
 
 import SwiftUI
 import Combine
 
-@MainActor
 struct ContentView: View {
     @StateObject private var game = GameModel()
     @Environment(\.scenePhase) private var phase
-    private let clock = Timer.publish(every: 1.0 / 60.0,
-        on: .main, in: .common).autoconnect()
-
+    private let clock = Timer.publish(every: 1.0 / 60.0, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        VStack(spacing: 12) {
-            Text("SPACE INVADERS").font(.title2.bold())
-            Text("Puntos: \(game.score)")
-            Toggle("Mover por inclinación", isOn: $game.useTilt)
+        VStack (spacing: 12){
+            Text("SPACE INVADERS")
+                .font(.title2.bold())
+            Text("Score: \(game.score)")
+            Toggle("Motion by tilt",isOn: $game.useTilt)
                 .disabled(!game.sensorAvailable)
+            board
+            HStack {
+                Button("Fire") { game.fire() }
+                    .disabled(game.paused || game.won)
+                Button(game.paused ? "Continue" : "Pause") {
+                    game.togglePause()
+                }.disabled(game.won)
+                Button("Reboot") { game.reset() }
+            }.buttonStyle(.bordered)
+            Text(game.useTilt && game.sensorAvailable
+                 ? "Tilt the iPhone and touch Fire."
+                 : "Drag for move and touch for fire.")
+                .font(.caption)
             if let warning = game.audioWarning {
-                Text("Audio: \(warning)")
+                Text(warning)
                     .font(.caption)
                     .foregroundStyle(.orange)
             }
-            board
-            HStack {
-                Button("Disparar") { game.fire() }
-                    .disabled(game.paused || game.finished)
-                Button(game.paused ? "Continuar" : "Pausa") {
-                    game.togglePause()
-                }.disabled(game.finished)
-                Button("Reiniciar") { game.reset() }
-            }.buttonStyle(.bordered)
-            Text(game.useTilt && game.sensorAvailable
-                 ? "Inclina el iPhone y toca para disparar."
-                 : "Arrastra para moverte y toca para disparar.")
-                .font(.caption)
         }
         .padding()
         .background(Color.black)
@@ -60,36 +57,34 @@ struct ContentView: View {
                 let h = geo.size.height
                 ZStack {
                     Image("universe2")
-                        .resizable()
-                        .scaledToFill()
+                        .resizable().scaledToFit()
                         .frame(width: w, height: h)
-                    ForEach(0..<5, id: \.self) { i in
-                        if game.alive[i] {
+                    ForEach(0..<5,id: \.self){ i in
+                        if game.alive[i]{
                             Image("badship2")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: w * 0.12,
-                                       height: h * 0.08)
+                                .resizable().scaledToFit()
+                                .frame(width: w * 0.10,
+                                       height: h * 0.07)
                                 .position(x: game.enemyX(i) * w,
-                                          y: game.enemyVerticalPosition * h)
+                                          y: h * 0.14)
                         }
                     }
                     Image("spaceship2")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: w * 0.18, height: h * 0.10)
-                        .position(x: game.shipX * w, y: h * 0.90)
+                        .resizable().scaledToFit()
+                        .frame(width: w * 0.12,
+                               height: h * 0.08)
+                        .position(x: game.shipX * w,
+                              y: h * 0.90)
+                        
                     if let bullet = game.bullet {
-                        Image("shot")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: w * 0.025,
-                                   height: h * 0.07)
+                        Image("shot").resizable().scaledToFit()
+                            .frame(width: w * 0.02,
+                                   height: h * 0.04)
                             .position(x: bullet.x * w,
                                       y: bullet.y * h)
                     }
-                    if game.finished || game.paused {
-                        Text(game.won ? "¡Ganaste!" : game.gameOver ? "¡Perdiste!" : "En pausa")
+                    if game.won || game.paused {
+                        Text(game.won ? "¡You win!" : "Paused")
                             .font(.largeTitle.bold())
                             .padding().background(Color.black.opacity(0.8))
                     }
@@ -106,3 +101,7 @@ struct ContentView: View {
             }
         }
     }
+    
+#Preview {
+    ContentView()
+}
