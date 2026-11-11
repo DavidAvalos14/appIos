@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AC7F5759309AA144003A7476 /* PlantillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7F5758309AA144003A7476 /* PlantillaApp.swift */; };
 		AC7F575B309AA144003A7476 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7F575A309AA144003A7476 /* ContentView.swift */; };
+		/* Añadido: incluir PersistenceController en el target de la app. */
+		D10000000000000000000001 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10000000000000000000002 /* Persistence.swift */; };
+		/* Añadido: empaquetar el modelo Core Data de la aplicación. */
+		D10000000000000000000003 /* FerreteraCD.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = D10000000000000000000004 /* FerreteraCD.xcdatamodeld */; };
 		AC7F575D309AA149003A7476 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7F575C309AA149003A7476 /* Assets.xcassets */; };
 		AC7F5760309AA14A003A7476 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7F575F309AA14A003A7476 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -17,6 +21,8 @@
 		AC7F5755309AA144003A7476 /* Plantilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plantilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7F5758309AA144003A7476 /* PlantillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantillaApp.swift; sourceTree = "<group>"; };
 		AC7F575A309AA144003A7476 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D10000000000000000000002 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		D10000000000000000000005 /* Producto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Producto.xcdatamodel; sourceTree = "<group>"; };
 		AC7F575C309AA149003A7476 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC7F575F309AA14A003A7476 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,6 +59,8 @@
 			children = (
 				AC7F5758309AA144003A7476 /* PlantillaApp.swift */,
 				AC7F575A309AA144003A7476 /* ContentView.swift */,
+				D10000000000000000000002 /* Persistence.swift */,
+				D10000000000000000000004 /* FerreteraCD.xcdatamodeld */,
 				AC7F575C309AA149003A7476 /* Assets.xcassets */,
 				AC7F575E309AA14A003A7476 /* Preview Content */,
 			);
@@ -66,6 +74,17 @@
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
+		};
+		/* Añadido: modelo Core Data FerreteraCD con la entidad Producto. */
+		D10000000000000000000004 /* FerreteraCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D10000000000000000000005 /* Producto.xcdatamodel */,
+			);
+			currentVersion = D10000000000000000000005 /* Producto.xcdatamodel */;
+			path = FerreteraCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End PBXGroup section */
 
@@ -127,6 +146,7 @@
 			files = (
 				AC7F5760309AA14A003A7476 /* Preview Assets.xcassets in Resources */,
 				AC7F575D309AA149003A7476 /* Assets.xcassets in Resources */,
+				D10000000000000000000003 /* FerreteraCD.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +159,7 @@
 			files = (
 				AC7F575B309AA144003A7476 /* ContentView.swift in Sources */,
 				AC7F5759309AA144003A7476 /* PlantillaApp.swift in Sources */,
+				D10000000000000000000001 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
